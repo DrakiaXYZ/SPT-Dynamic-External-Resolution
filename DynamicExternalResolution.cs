@@ -1,22 +1,23 @@
 ﻿using BepInEx;
+using Comfort.Common;
 using DynamicExternalResolution.Configs;
 using EFT;
 
 namespace DynamicExternalResolution
 {
-    [BepInPlugin("com.DynamicExternalResolution", "Dynamic External Resolution", "1.0")]
+    [BepInPlugin("com.DynamicExternalResolution", "Dynamic External Resolution", "1.5.0")]
     public class DynamicExternalResolution : BaseUnityPlugin
     {
-        static Player _localPlayer = null;
+        private static Player _localPlayer = null;
 
-        public static Player getPlayetInstance()
+        public static Player getPlayerInstance()
         {
             if (_localPlayer != null)
             {
                 return _localPlayer;
             }
             
-            _localPlayer = FindObjectOfType<Player>();
+            _localPlayer = Singleton<GameWorld>.Instance.MainPlayer;
             return _localPlayer;
         }
         
