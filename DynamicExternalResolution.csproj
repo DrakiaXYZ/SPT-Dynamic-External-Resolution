@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net472</TargetFramework>
+		<TargetFramework>net471</TargetFramework>
 		<AssemblyName>DynamicExternalResolution</AssemblyName>
 		<Version>1.3.0</Version>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -11,59 +11,63 @@
 
 	<ItemGroup>
 		<Reference Include="0Harmony">
-			<HintPath>F:\SinglePlayerTarkov\BepInEx\core\0Harmony.dll</HintPath>
+			<HintPath>..\..\BepInEx\core\0Harmony.dll</HintPath>
 		</Reference>
-		<Reference Include="Aki.Common">
-			<HintPath>F:\SinglePlayerTarkov\EscapeFromTarkov_Data\Managed\Aki.Common.dll</HintPath>
+		<Reference Include="spt-common">
+			<HintPath>..\..\BepInEx\Plugins\spt\spt-common.dll</HintPath>
 		</Reference>
 		<Reference Include="ItemComponent.Types">
-			<HintPath>F:\SinglePlayerTarkov\EscapeFromTarkov_Data\Managed\ItemComponent.Types.dll</HintPath>
+			<HintPath>..\..\EscapeFromTarkov_Data\Managed\ItemComponent.Types.dll</HintPath>
 		</Reference>
-		<Reference Include="Aki.Reflection">
-			<HintPath>F:\SinglePlayerTarkov\EscapeFromTarkov_Data\Managed\Aki.Reflection.dll</HintPath>
+		<Reference Include="spt-reflection">
+			<HintPath>..\..\BepInEx\Plugins\spt\spt-reflection.dll</HintPath>
 		</Reference>
 		<Reference Include="Assembly-CSharp">
-			<HintPath>F:\SinglePlayerTarkov\EscapeFromTarkov_Data\Managed\Assembly-CSharp.dll</HintPath>
+			<HintPath>..\..\EscapeFromTarkov_Data\Managed\Assembly-CSharp.dll</HintPath>
 		</Reference>
 		<Reference Include="BepInEx">
-			<HintPath>F:\SinglePlayerTarkov\BepInEx\core\BepInEx.dll</HintPath>
+			<HintPath>..\..\BepInEx\core\BepInEx.dll</HintPath>
 		</Reference>
 		<Reference Include="Comfort">
-			<HintPath>F:\SinglePlayerTarkov\EscapeFromTarkov_Data\Managed\Comfort.dll</HintPath>
+			<HintPath>..\..\EscapeFromTarkov_Data\Managed\Comfort.dll</HintPath>
 		</Reference>
 		<Reference Include="Newtonsoft.Json">
-			<HintPath>F:\SinglePlayerTarkov\EscapeFromTarkov_Data\Managed\Newtonsoft.Json.dll</HintPath>
+			<HintPath>..\..\EscapeFromTarkov_Data\Managed\Newtonsoft.Json.dll</HintPath>
 		</Reference>
 		<Reference Include="Sirenix.Serialization">
-			<HintPath>F:\SinglePlayerTarkov\EscapeFromTarkov_Data\Managed\Sirenix.Serialization.dll</HintPath>
+			<HintPath>..\..\EscapeFromTarkov_Data\Managed\Sirenix.Serialization.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Postprocessing.Runtime">
-			<HintPath>F:\SinglePlayerTarkov\EscapeFromTarkov_Data\Managed\Unity.Postprocessing.Runtime.dll</HintPath>
+			<HintPath>..\..\EscapeFromTarkov_Data\Managed\Unity.Postprocessing.Runtime.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.TextMeshPro">
-			<HintPath>F:\SinglePlayerTarkov\EscapeFromTarkov_Data\Managed\Unity.TextMeshPro.dll</HintPath>
+			<HintPath>..\..\EscapeFromTarkov_Data\Managed\Unity.TextMeshPro.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine">
-			<HintPath>F:\SinglePlayerTarkov\EscapeFromTarkov_Data\Managed\UnityEngine.dll</HintPath>
+			<HintPath>..\..\EscapeFromTarkov_Data\Managed\UnityEngine.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.CoreModule">
-			<HintPath>F:\SinglePlayerTarkov\EscapeFromTarkov_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+			<HintPath>..\..\EscapeFromTarkov_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.PhysicsModule">
-			<HintPath>F:\SinglePlayerTarkov\EscapeFromTarkov_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+			<HintPath>..\..\EscapeFromTarkov_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.UI">
-			<HintPath>F:\SinglePlayerTarkov\EscapeFromTarkov_Data\Managed\UnityEngine.UI.dll</HintPath>
+			<HintPath>..\..\EscapeFromTarkov_Data\Managed\UnityEngine.UI.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.UnityWebRequestModule">
-			<HintPath>F:\SinglePlayerTarkov\EscapeFromTarkov_Data\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
+			<HintPath>..\..\EscapeFromTarkov_Data\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.UnityWebRequestTextureModule">
-			<HintPath>F:\SinglePlayerTarkov\EscapeFromTarkov_Data\Managed\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+			<HintPath>..\..\EscapeFromTarkov_Data\Managed\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.UnityWebRequestWWWModule">
-			<HintPath>F:\SinglePlayerTarkov\EscapeFromTarkov_Data\Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+			<HintPath>..\..\EscapeFromTarkov_Data\Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
 		</Reference>
 	</ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+	  <Exec Command="copy &quot;$(TargetPath)&quot; &quot;$(ProjectDir)\..\..\BepInEx\plugins\$(TargetFileName)&quot;" />
+	</Target>
   
 </Project>
