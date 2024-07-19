@@ -5,7 +5,7 @@ using EFT;
 
 namespace DynamicExternalResolution
 {
-    [BepInPlugin("com.DynamicExternalResolution", "Dynamic External Resolution", "1.3.0")]
+    [BepInPlugin("com.DynamicExternalResolution", "Dynamic External Resolution", "4.0.0")]
     public class DynamicExternalResolution : BaseUnityPlugin
     {
         private static Player _localPlayer = null;
